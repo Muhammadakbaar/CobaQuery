@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.query
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [ annotation-api, app-name, data, data-jpa, hibernate-jpa, http-client, jackson-databind, java, java-application, jdbc-hikari, junit, logback, lombok, mariadb, maven, netty-server, reactor, reactor-http-client, readme, shade, test-resources, yaml ]

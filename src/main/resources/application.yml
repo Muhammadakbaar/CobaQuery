@@ -1,0 +1,18 @@
+micronaut:
+  server:
+    port: 8080
+  application:
+    name: coba_query
+
+jackson:
+  bean-introspection-module: true
+
+datasources:
+  default:
+    url: jdbc:mariadb://localhost:3306/query
+    driverClassName: org.mariadb.jdbc.Driver
+    username: root
+    password: '01111997'
+    schema-generate: CREATE_DROP
+    dialect: MYSQL
+jpa.default.properties.hibernate.hbm2ddl.auto: update
