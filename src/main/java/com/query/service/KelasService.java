@@ -8,6 +8,7 @@ import com.query.repository.MateriRepository;
 import io.micronaut.http.annotation.Body;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -29,24 +30,24 @@ public class KelasService {
     }
 
     public String addKelas(KelasDto kelasDto){
-        Set<Long> materiId = kelasDto.getId_materi();
+       Set<Long> materiIdList = kelasDto.getId_materi();
         List<Materi> materiList = new ArrayList<>();
-        materiId.forEach(m ->{
+        materiIdList.forEach(m -> {
             Optional<Materi> materi = materiRepository.findById(m);
-            if (materi.isPresent()){
+            if (materi.isPresent()) {
                 materiList.add(materi.get());
             }
         });
-        Kelas newKelas = Kelas.builder()
-                .namaKelas(kelasDto.getNamaKelas())
-                .kodeKelas(kelasDto.getKodeKelas())
-                .tanggalMulai(kelasDto.getTanggalMulai())
-                .jumlahPertemuan(kelasDto.getJumlahPertemuan())
-                .biaya(kelasDto.getBiaya())
+        Kelas kelas = Kelas.builder()
+             .namaKelas(kelasDto.getNamaKelas())
+             .kodeKelas(kelasDto.getKodeKelas())
+             .tanggalMulai(kelasDto.getTanggalMulai())
+             .jumlahPertemuan(kelasDto.getJumlahPertemuan())
+             .biaya(kelasDto.getBiaya())
                 .materi(materiList)
-                .build();
-        Kelas result = kelasRepository.save(newKelas);
-        return "Berhasil Mmembuat kelas" + result;
+             .build();
+     Kelas result = kelasRepository.save(kelas);
+        return "" + result;
     }
 
     public String updateKelas(Kelas kelas, Long id){

@@ -24,7 +24,7 @@ import java.util.Set;
 @Table(name = "kelas")
 public class Kelas {
 
-    @OneToMany(fetch = FetchType.EAGER,targetEntity = Materi.class, cascade = CascadeType.MERGE)
+    @OneToMany(fetch = FetchType.EAGER,targetEntity = Materi.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "kelas_materi",
             joinColumns = @JoinColumn(name = "id_kelas"),
@@ -50,6 +50,4 @@ public class Kelas {
 
     @Column(name = "biaya")
     private Float biaya;
-
-
 }
